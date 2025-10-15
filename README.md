@@ -149,6 +149,38 @@ Group ID ของ Facebook (ใช้เฉพาะ `group_share` และ `g
 
 ---
 
+## 5. Reward API Format
+
+เมื่อมีการอนุมัติ (ทั้งแบบ manual และ auto-approve) bot จะยิง POST request ไปที่ URL ที่กำหนดใน `rewardApiUrl`
+
+### Request Format
+```json
+{
+  "discord": "123456789012345678",
+  "rewards": [
+    { "item": "diamond", "amount": 100 },
+    { "item": "gacha_ticket", "amount": 5 }
+  ]
+}
+```
+
+### Response Format (Expected)
+```json
+{
+  "success": true,
+  "message": "Rewards sent successfully",
+  "data": {}
+}
+```
+
+### หมายเหตุ
+- `discord` คือ Discord User ID ของผู้ส่งลิงก์
+- `rewards` คือ array ของรางวัลที่กำหนดใน config
+- API ควร return `success: true` เมื่อสำเร็จ
+- ถ้า API ล้มเหลว bot จะ log warning แต่จะไม่หยุดการทำงาน
+
+---
+
 ## ตัวอย่าง config.json
 
 ```json
