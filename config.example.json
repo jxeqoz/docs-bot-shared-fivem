@@ -1,0 +1,108 @@
+{
+  "token": "YOUR_BOT_TOKEN_HERE",
+  "clientId": "YOUR_CLIENT_ID_HERE",
+  "guildId": "YOUR_GUILD_ID_HERE",
+  "submitChannelId": "YOUR_SUBMIT_CHANNEL_ID_HERE",
+  "embedImageURL": "https://i.imgur.com/AfFp7pu.png",
+  "deleteMessageOnReview": false,
+  "showReviewerInDM": false,
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "your_password",
+    "database": "events_log_discord"
+  },
+  "linkCategories": [
+    {
+      "_comment": "ตัวอย่างที่ 1: Facebook แชร์โพสต์หน้าเฟส + ติด Hashtag (ตรวจสอบแบบแมนนวล)",
+      "id": "facebook_page_share",
+      "name": "Facebook แชร์โพสต์หน้าเฟส",
+      "description": "แชร์โพสต์หน้าเฟส/โพสต์หน้าเฟส + ติด Hashtag",
+      "submissionChannelId": "YOUR_ADMIN_CHANNEL_ID",
+      "maxLinks": 3,
+      "maxSubmissionsPerDay": 5,
+      "cooldownHours": 4,
+      "cooldownMinutes": 0,
+      "oneSubmissionPerEvent": false,
+      "rewards": [
+        { "item": "diamond", "amount": 100 },
+        { "item": "gacha_ticket", "amount": 5 }
+      ],
+      "validation": {
+        "enabled": true,
+        "_comment_enabled": "เปิด/ปิดการตรวจสอบ (true/false)",
+        "autoApprove": false,
+        "_comment_autoApprove": "true = อนุมัติอัตโนมัติถ้าผ่าน, false = ต้องแอดมินอนุมัติ",
+        "platform": "facebook",
+        "_comment_platform": "facebook หรือ tiktok",
+        "type": "page_share",
+        "_comment_type": "page_share, page_post, group_share, group_post, tiktok_video",
+        "hashtags": ["#SEACITY", "#seacity"],
+        "_comment_hashtags": "Hashtag ที่ต้องมีในโพสต์ (ตรวจแบบ case-insensitive)"
+      }
+    },
+    {
+      "_comment": "ตัวอย่างที่ 2: Facebook โพสต์ลงกลุ่ม + Hashtag (ตรวจสอบกลุ่มที่กำหนด)",
+      "id": "facebook_group_share",
+      "name": "Facebook โพสต์ลงกลุ่ม",
+      "description": "แชร์/โพสต์ลงกลุ่มที่กำหนด + ติด Hashtag",
+      "submissionChannelId": "YOUR_ADMIN_CHANNEL_ID",
+      "maxLinks": 3,
+      "maxSubmissionsPerDay": 3,
+      "cooldownHours": 1,
+      "cooldownMinutes": 0,
+      "oneSubmissionPerEvent": false,
+      "rewards": [
+        { "item": "diamond", "amount": 100 }
+      ],
+      "validation": {
+        "enabled": true,
+        "autoApprove": false,
+        "platform": "facebook",
+        "type": "group_share",
+        "hashtags": ["#SEACITY", "#seacity"],
+        "groupIds": ["123456789", "987654321"],
+        "_comment_groupIds": "Facebook Group ID ที่อนุญาต (ใส่หลาย ID ได้)"
+      }
+    },
+    {
+      "_comment": "ตัวอย่างที่ 3: TikTok + Hashtag (อนุมัติอัตโนมัติ)",
+      "id": "tiktok_hashtag",
+      "name": "TikTok โพสต์ + Hashtag",
+      "description": "ส่งลิงก์ TikTok พร้อม Hashtag",
+      "submissionChannelId": "YOUR_ADMIN_CHANNEL_ID",
+      "maxLinks": 1,
+      "maxSubmissionsPerDay": 1,
+      "cooldownHours": 24,
+      "cooldownMinutes": 0,
+      "oneSubmissionPerEvent": true,
+      "rewards": [
+        { "item": "diamond", "amount": 200 }
+      ],
+      "validation": {
+        "enabled": true,
+        "autoApprove": true,
+        "_comment_autoApprove": "อนุมัติอัตโนมัติถ้าตรวจสอบผ่าน!",
+        "platform": "tiktok",
+        "type": "tiktok_video",
+        "hashtags": ["#SEACITY", "#seacity", "#SeaCity"]
+      }
+    },
+    {
+      "_comment": "ตัวอย่างที่ 4: ไม่ตรวจสอบอะไรเลย (รับลิงก์อะไรก็ได้)",
+      "id": "no_validation",
+      "name": "ส่งลิงก์ทั่วไป",
+      "description": "ส่งลิงก์อะไรก็ได้",
+      "submissionChannelId": "YOUR_ADMIN_CHANNEL_ID",
+      "maxLinks": 5,
+      "maxSubmissionsPerDay": 10,
+      "cooldownHours": 0,
+      "cooldownMinutes": 30,
+      "oneSubmissionPerEvent": false,
+      "rewards": [
+        { "item": "coin", "amount": 50 }
+      ]
+    }
+  ]
+}
