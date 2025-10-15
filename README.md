@@ -1,0 +1,1 @@
+# docs-bot-shared-fivem
